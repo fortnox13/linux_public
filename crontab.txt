@@ -1,0 +1,30 @@
+#sudo crontab -l
+
+*       *       *       *       *       /scr/script >> /backup/log
+*       *       *       *       *       /backup/test  >> /backup/log
+
+#====================================================================
+
+
+# nano /scr/script
+
+#!/bin/bash
+
+#script for delete find older 3 minute
+find $SCRPATH* -amin +3 | xargs rm -rf
+
+#============================================================================================
+
+
+# nano /scr/test
+
+#!/bin/bash
+echo "Set the path that needs to check old files."
+read PATH
+echo "Set in minutes how old files needs to delete."
+read T
+echo "find $PATH* -amin $T | xargs rm -rf"
+
+find /backup/* -amin +5
+
+
