@@ -1,7 +1,7 @@
 #sudo crontab -l
 
 *       *       *       *       *       /scr/script >> /backup/log
-*       *       *       *       *       /backup/test  >> /backup/log
+*       *       *       *       *       /scr/test  >> /backup/log
 
 #====================================================================
 
@@ -11,7 +11,7 @@
 #!/bin/bash
 
 #script for delete find older 3 minute
-find $SCRPATH* -amin +3 | xargs rm -rf
+find /backup/* -amin +3 | xargs rm -rf
 
 #============================================================================================
 
